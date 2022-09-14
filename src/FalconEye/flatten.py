@@ -10,12 +10,6 @@ class Flatten:
                         self.queue.append(value)
                     else:
                         self.items[key] = value
-            elif isinstance(obj, list):
-                for value in obj:
-                    if isinstance(value, dict) or isinstance(value, list):
-                        self.queue.append(value)
-                    else:
-                        self.items.append(value)
             if self.queue:
                 next_item = self.queue.pop()
                 runtime(next_item)
