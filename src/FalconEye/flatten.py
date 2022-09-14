@@ -1,15 +1,15 @@
-class Walk:
+class Flatten:
     def __init__(self, obj):
         self.obj = obj
-        self.items = []
+        self.items = {}
         self.queue = []
         def runtime(obj=obj):
             if isinstance(obj, dict):
                 for key, value in obj.items():
-                    if isinstance(value, dict) or isinstance(value, list):
+                    if isinstance(value, dict):
                         self.queue.append(value)
                     else:
-                        self.items.append(value)
+                        self.items[key] = value
             elif isinstance(obj, list):
                 for value in obj:
                     if isinstance(value, dict) or isinstance(value, list):
@@ -20,4 +20,3 @@ class Walk:
                 next_item = self.queue.pop()
                 runtime(next_item)
         runtime()
-        
